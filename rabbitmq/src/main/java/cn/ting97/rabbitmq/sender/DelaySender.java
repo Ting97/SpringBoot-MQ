@@ -22,6 +22,8 @@ public class DelaySender {
     }
 
     public void send(String message, int ttl) {
+        // 设置过期时间，时间单位为 ms
+        // 通过修改消息配置达成设置过期时间的要求
         rabbitTemplate.convertAndSend(MQConstants.DELAY_EXCHANGE, MQConstants.DELAY_ROUTING_KEY, message, messages -> {
             // 设置过期时间
             messages.getMessageProperties().setExpiration(ttl + "");
@@ -31,8 +33,9 @@ public class DelaySender {
     }
 
     public void toolSend(String message, int ttl) {
+        // 在启用 rabbitmq_delayed_message_exchange 插件后， 使用setDelay设置延迟时间 时间单位为 ms
         rabbitTemplate.convertAndSend(MQConstants.DELAYED_EXCHANGE, MQConstants.DELAYED_ROUTING_KEY, message, messages -> {
-            // 设置过期时间
+            // 设置延迟时间
             messages.getMessageProperties().setDelay(ttl);
             return messages;
         });

@@ -23,6 +23,7 @@ public class SimpleSender {
     public void send() {
         String context = "hello " + new Date();
         System.out.println("Sender : " + context);
+        // 不填写交换机
         this.rabbitTemplate.convertAndSend(MQConstants.HELLO_QUEUE, context);
     }
 

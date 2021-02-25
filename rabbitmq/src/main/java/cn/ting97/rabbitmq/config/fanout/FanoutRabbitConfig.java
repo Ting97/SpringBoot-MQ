@@ -37,7 +37,7 @@ public class FanoutRabbitConfig {
     }
 
     /**
-     * 3. 绑定路由key
+     * 3. 绑定交换机
      */
     @Bean
     public Binding fanout1Binding() {

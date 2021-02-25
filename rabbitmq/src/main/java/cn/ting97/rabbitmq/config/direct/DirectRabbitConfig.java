@@ -37,7 +37,7 @@ public class DirectRabbitConfig {
     }
 
     /**
-     * 3. 绑定路由key
+     * 3. 绑定交换机路由key
      */
     @Bean
     public Binding direct1Binding() {

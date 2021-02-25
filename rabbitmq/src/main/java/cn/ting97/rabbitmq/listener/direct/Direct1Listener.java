@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 @RabbitListener(queues = MQConstants.DIRECT1_QUEUE)
 public class Direct1Listener {
+    /**
+     * 消费方法， @RabbitListener 注解在类上 @RabbitHandler在方法上
+     *
+     * @param message 参数类型为String 为消息主体
+     */
     @RabbitHandler
     public void consumer(String message) {
         System.out.println("consumer 1" + message);

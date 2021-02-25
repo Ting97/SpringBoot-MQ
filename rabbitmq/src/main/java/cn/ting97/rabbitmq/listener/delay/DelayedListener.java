@@ -17,6 +17,11 @@ import java.time.LocalDateTime;
 @Component
 public class DelayedListener {
 
+    /**
+     * 消费者方法 在方法上添加 @RabbitListener 注解，参数类型为Message
+     *
+     * @param message 消息类 其中Body为消息主体
+     */
     @RabbitListener(queues = MQConstants.DELAYED_QUEUE)
     public void consumer(Message message) {
         System.out.println("consumer message = " + new String(message.getBody()) + "consume time = " + LocalDateTime.now());
